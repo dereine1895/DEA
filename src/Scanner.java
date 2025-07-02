@@ -5,15 +5,17 @@ public class Scanner {
     private boolean fehler;
     private String eingabe;
     private List<Token> tokenliste;
+    private Token aktuellesToken;
 
     public Scanner(String pEingabe, List<Token> pTokenliste){
         this.eingabe = pEingabe;
          this.tokenliste = pTokenliste;
+         tokenliste.toFirst();
          this.fehler = false;
 
 
     }
-    public void Scanner(){
+    public void scanne(){
 
         if(eingabe.length() !=7 || eingabe.charAt(6) != '#') {
             fehler = true;
@@ -61,11 +63,10 @@ public class Scanner {
 
     }
     public List<Token> getTokenliste(){
-        return tokenliste;
+        if(fehler == false){
+            return tokenliste;
+        }else return null;
     }
-
-
-
 
 
 

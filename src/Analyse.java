@@ -2,35 +2,27 @@ import utils.*;
 
 public class Analyse {
     private String eingabe;
+    private Scanner scanner;
+    private Parser parser;
+    private List<Token> tokenliste;
 
     public Analyse(String pEingabe) {
         this.eingabe = pEingabe;
+        tokenliste = new List<Token>();
+        scanner = new Scanner(eingabe, tokenliste);
     }
 
     public void analysieren() {
-        List<Token> tokenliste = new List<>();
-
-        // Scanner mit Eingabe und Liste erzeugen
-        Scanner scanner = new Scanner(eingabe, tokenliste);
-        scanner.Scanner();
-
-        // Fehler beim Scannen prüfen
-        if (scanner.hatFehler()) {
-            System.out.println("Fehler beim Scannen!");
-            return;
-        }
-
-        // Parser mit Tokenliste erzeugen
-        Parser parser = new Parser(tokenliste);
-        boolean parsingErfolg = parser.parse();
-
-        // Parser-Fehler prüfen
-        if (!parsingErfolg || parser.hatFehler()) {
+        Scanner.scanner();
+        if (scanner.getTokenliste() != null) {
+            parser = new Parser(scanner.getTokenliste());
+            if(parser.parse()){
             System.out.println("Fehler beim Parsen!");
         } else {
             System.out.println("Analyse erfolgreich!");
         }
     }
+    }
+
 
     }
-}

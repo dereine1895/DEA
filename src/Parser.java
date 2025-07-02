@@ -1,8 +1,9 @@
 import utils.*;
 
 public class Parser {
-    private List<Token> tokenliste;
     private boolean fehler;
+    private List<Token> tokenliste;
+    private Token aktuellesToken;
 
     public Parser(List<Token> pTokenliste){
         this.tokenliste = pTokenliste;
@@ -71,10 +72,5 @@ public class Parser {
         }
     }
 
-    public boolean hatFehler() {
-        return fehler;
-    }
-
-    }
 
 }
