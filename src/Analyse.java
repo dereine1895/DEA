@@ -13,7 +13,7 @@ public class Analyse {
     }
 
     public void analysieren() {
-        Scanner.scanne();
+        scanner.scanne();
         if (scanner.getTokenliste() != null) {
             parser = new Parser(scanner.getTokenliste());
             if(parser.parse()){
